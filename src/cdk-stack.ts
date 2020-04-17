@@ -30,29 +30,6 @@ export class CrossAccountRolesStack extends core.Stack {
   constructor(scope: core.Construct, id: string, props?: EnvProps) {
     super(scope, id, props);
 
-    // Create a boundary policy
-    // const boundaryPolicy = new iam.Policy(
-    //   this,
-    //   'BoundaryPolicy',
-    //   {
-    //     statements: [
-    //       new iam.PolicyStatement({
-    //         notActions: [
-    //           'iam:Create*',
-    //           'iam:Delete*',
-    //           'iam:Update*',
-    //           'iam:Attach*',
-    //           'iam:Detach'
-    //         ],
-    //         effect: iam.Effect.ALLOW,
-    //         resources: [
-    //           '*'
-    //         ]
-    //       })
-    //     ]
-    //   }
-    // )
-
     // Create Cloudformation Execution Role
     const cfExecutionRole = new iam.Role(
       this,
@@ -79,11 +56,6 @@ export class CrossAccountRolesStack extends core.Stack {
                 resources: [
                   '*'
                 ]
-                // conditions: {
-                //   'StringEquals': {
-                //     'iam:PermissionsBoundary': 'arn:aws:iam::'+this.account+':policy/'+boundaryPolicy.policyName
-                //    }
-                // }
               }),
               new iam.PolicyStatement({
                 actions: [
@@ -193,16 +165,6 @@ export class CrossAccountRolesStack extends core.Stack {
     crossAccountRole.assumeRolePolicy?.addStatements(sessionTaggingPolicy)
 
     /*********************************** List of Outputs ************************************/
-    // new core.CfnOutput(
-    //   this,
-    //   'BoundaryPolicyArn',
-    //   {
-    //     description: 'Boundary polocy for roles created through Cross Account Cloudformation Stack',
-    //     exportName: 'GIT-ACTIONS-BOUNDARY-POLICY-ARN',
-    //     value: 'arn:aws:iam::'+this.account+':policy/'+boundaryPolicy.policyName
-    //   }
-    // )
-    
     new core.CfnOutput(
       this,
       'CFExecutionRoleArn',
