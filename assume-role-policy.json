@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "CrossAccountAssumeRole",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": [
+                "arn:aws:iam::<target-account-id>:role/git-action-cross-account-role"
+            ]
+        },
+        {
+            "Sid": "STSSessionTagging",
+            "Effect": "Allow",
+            "Action": "sts:TagSession",
+            "Resource": "*"
+        }
+    ]
+}
