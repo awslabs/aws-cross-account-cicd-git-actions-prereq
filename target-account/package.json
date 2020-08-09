@@ -1,0 +1,26 @@
+{
+  "name": "aws-cross-account-cicd-git-actions-prereq",
+  "version": "0.1.0",
+  "bin": {
+    "aws-cross-account-cicd-git-actions-prereq": "dist/app.js"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rmdir-cli dist",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^1.31.0",
+    "@aws-cdk/aws-iam": "^1.31.0",
+    "@aws-cdk/aws-s3": "^1.31.0",
+    "@aws-cdk/core": "^1.31.0",
+    "@types/node": "^13.7.7",
+    "aws-cdk": "^1.31.0",
+    "rmdir-cli": "^2.0.6",
+    "ts-node": "^8.1.0",
+    "typescript": "~3.7.2",
+    "source-map-support": "^0.5.16"
+  }
+}
