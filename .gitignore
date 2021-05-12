@@ -117,3 +117,6 @@ dist
 # Local VSCode IDE related files
 **/.vscode
 .DS_Store
+
+# package-lock.json
+package-lock.json
